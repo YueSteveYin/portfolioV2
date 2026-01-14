@@ -1,0 +1,74 @@
+[
+  {
+    "id": "unewise-screening",
+    "title": "UniWise Screening Tool",
+    "desc": "Real-time Zoom transcription with live UI autofill, case workflow, and SSE-driven updates.",
+    "tag": "React · FastAPI · SSE",
+    "year": "2025",
+    "href": "https://example.com/unewise-screening"
+  },
+  {
+    "id": "contrasight",
+    "title": "ContraSight",
+    "desc": "Document upload → parsing → contraindication analysis, with PDF viewer highlights and results delivery.",
+    "tag": "React · Parser · PDF Highlights",
+    "year": "2025",
+    "href": "https://example.com/contrasight"
+  },
+  {
+    "id": "hidden-figures",
+    "title": "Hidden Figures in Physics & Astronomy",
+    "desc": "Static site with config-driven pages, markdown content pipeline, fast search, and CI/CD deployment.",
+    "tag": "Hugo · Pagefind · GitHub Actions",
+    "year": "2024",
+    "href": "https://example.com/hidden-figures"
+  },
+  {
+    "id": "settlyfe",
+    "title": "Settlyfe Platform",
+    "desc": "Booking/status UI system, responsive components, and product flows across mobile + web.",
+    "tag": "React · React Native · Tailwind",
+    "year": "2025",
+    "href": "https://example.com/settlyfe"
+  },
+  {
+    "id": "lyfestyler",
+    "title": "LyfeStyler UI Flow",
+    "desc": "Room styling feature: describe style, upload room image, select references, and generate results.",
+    "tag": "React · UI/UX",
+    "year": "2025",
+    "href": "https://example.com/lyfestyler"
+  },
+  {
+    "id": "cloth-sim",
+    "title": "Tearable Cloth Simulation",
+    "desc": "Constraint-based cloth physics with mouse interaction, tearing, and smooth canvas rendering.",
+    "tag": "JavaScript · Canvas · Physics",
+    "year": "2025",
+    "href": "https://example.com/cloth-sim"
+  },
+  {
+    "id": "gomoku-mcts",
+    "title": "Gomoku AI (MCTS)",
+    "desc": "Monte Carlo Tree Search agent with heuristics and rollout strategies for stronger play.",
+    "tag": "Python · MCTS",
+    "year": "2024",
+    "href": "https://example.com/gomoku-mcts"
+  },
+  {
+    "id": "tasty-noodle",
+    "title": "Tasty Noodle",
+    "desc": "Fortune-telling website with algorithmic noodle drawings and accessibility-focused UI.",
+    "tag": "Full-stack · Accessibility",
+    "year": "2023",
+    "href": "https://example.com/tasty-noodle"
+  },
+  {
+    "id": "ftp-go",
+    "title": "Rate-Limited FTP Client/Server",
+    "desc": "File upload/download with optional per-connection rate control and robust framing/parsing.",
+    "tag": "Go · Networking",
+    "year": "2025",
+    "href": "https://example.com/ftp-go"
+  }
+]

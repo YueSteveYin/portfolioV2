@@ -1,0 +1,107 @@
+[
+  {
+    "id": "ucsd-program-coordinator",
+    "title": "Program Coordinator",
+    "org": "UC San Diego",
+    "period": "Aug 2024 – Present",
+    "description": "Design, market, coordinate, and execute programs and activities for master students in the UCSD Jacobs School of Engineering."
+  },
+  {
+    "id": "ucsd-mscs",
+    "title": "M.S. Computer Science",
+    "org": "UC San Diego",
+    "period": "Sep 2024",
+    "description": "Started the Master of Computer Science program."
+  },
+  {
+    "id": "ucsd-bsce",
+    "title": "B.S. Computer Engineering",
+    "org": "UC San Diego",
+    "period": "Jun 2024",
+    "description": "Graduated with a bachelor degree in Computer Engineering within 3 years."
+  },
+  {
+    "id": "hidden-figures-rcsa",
+    "title": "Lead Software Engineer",
+    "org": "Research Corporation for Science Advancement",
+    "period": "Jun 2024 – Sep 2024",
+    "description": "Built Hidden Figures using Hugo, HTML, CSS, and JavaScript. Implemented markdown-based profiles and optimized search with Pagefind."
+  },
+  {
+    "id": "axiom-trading-frontend",
+    "title": "Frontend Developer",
+    "org": "Axiom Trading",
+    "period": "Mar 2024 – Jun 2024",
+    "description": "Developed React UI components and improved performance, accessibility, and cross-device compatibility."
+  },
+  {
+    "id": "ucsd-program-coordinator",
+    "title": "Program Coordinator",
+    "org": "UC San Diego",
+    "period": "Aug 2024 – Present",
+    "description": "Design, market, coordinate, and execute programs and activities for master students in the UCSD Jacobs School of Engineering."
+  },
+  {
+    "id": "ucsd-mscs",
+    "title": "M.S. Computer Science",
+    "org": "UC San Diego",
+    "period": "Sep 2024",
+    "description": "Started the Master of Computer Science program."
+  },
+  {
+    "id": "ucsd-bsce",
+    "title": "B.S. Computer Engineering",
+    "org": "UC San Diego",
+    "period": "Jun 2024",
+    "description": "Graduated with a bachelor degree in Computer Engineering within 3 years."
+  },
+  {
+    "id": "hidden-figures-rcsa",
+    "title": "Lead Software Engineer",
+    "org": "Research Corporation for Science Advancement",
+    "period": "Jun 2024 – Sep 2024",
+    "description": "Built Hidden Figures using Hugo, HTML, CSS, and JavaScript. Implemented markdown-based profiles and optimized search with Pagefind."
+  },
+  {
+    "id": "axiom-trading-frontend",
+    "title": "Frontend Developer",
+    "org": "Axiom Trading",
+    "period": "Mar 2024 – Jun 2024",
+    "description": "Developed React UI components and improved performance, accessibility, and cross-device compatibility."
+  },
+  {
+    "id": "ucsd-program-coordinator",
+    "title": "Program Coordinator",
+    "org": "UC San Diego",
+    "period": "Aug 2024 – Present",
+    "description": "Design, market, coordinate, and execute programs and activities for master students in the UCSD Jacobs School of Engineering."
+  },
+  {
+    "id": "ucsd-mscs",
+    "title": "M.S. Computer Science",
+    "org": "UC San Diego",
+    "period": "Sep 2024",
+    "description": "Started the Master of Computer Science program."
+  },
+  {
+    "id": "ucsd-bsce",
+    "title": "B.S. Computer Engineering",
+    "org": "UC San Diego",
+    "period": "Jun 2024",
+    "description": "Graduated with a bachelor degree in Computer Engineering within 3 years."
+  },
+  {
+    "id": "hidden-figures-rcsa",
+    "title": "Lead Software Engineer",
+    "org": "Research Corporation for Science Advancement",
+    "period": "Jun 2024 – Sep 2024",
+    "description": "Built Hidden Figures using Hugo, HTML, CSS, and JavaScript. Implemented markdown-based profiles and optimized search with Pagefind."
+  },
+  {
+    "id": "axiom-trading-frontend",
+    "title": "Frontend Developer",
+    "org": "Axiom Trading",
+    "period": "Mar 2024 – Jun 2024",
+    "description": "Developed React UI components and improved performance, accessibility, and cross-device compatibility."
+  }
+]
