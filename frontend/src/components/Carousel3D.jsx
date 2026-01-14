@@ -7,6 +7,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import ProjectCard from "./projectCard.jsx";
 
 const Carousel3D = forwardRef(function Carousel3D({ items }, ref) {
   const blockRef = useRef(null);
@@ -64,7 +65,6 @@ const Carousel3D = forwardRef(function Carousel3D({ items }, ref) {
     const w = sceneW;
     const h = Math.round(w * 0.42);
 
-    // BIG impressive cards
     const cardW = Math.round(w * 1.45);
     const cardH = Math.round(h * 1.6);
 
@@ -83,11 +83,11 @@ const Carousel3D = forwardRef(function Carousel3D({ items }, ref) {
       top,
       borderRadius,
       perspective,
-      transitionMs: 0, // GSAP drives transforms, keep instant
+      transitionMs: 0,
     };
   }, [sceneW]);
 
-  // layout cells and store geometry in layoutRef
+  // layout cells
   useEffect(() => {
     const carousel = carouselRef.current;
     if (!carousel) return;
@@ -99,10 +99,10 @@ const Carousel3D = forwardRef(function Carousel3D({ items }, ref) {
       if (!cells.length) return;
 
       const theta = 360 / cellCount;
-
-      // spacing controls the gap
       const spacingSize = Math.round(layout.sceneW * 1.6);
-      const radius = Math.round((spacingSize / 2) / Math.tan(Math.PI / cellCount));
+      const radius = Math.round(
+        spacingSize / 2 / Math.tan(Math.PI / cellCount),
+      );
 
       for (let i = 0; i < cells.length; i++) {
         const cell = cells[i];
@@ -112,7 +112,10 @@ const Carousel3D = forwardRef(function Carousel3D({ items }, ref) {
         cell.style.opacity = 1;
 
         // inside barrel: face inward
-        cell.style.transform = `rotateY(${cellAngle}deg) translateZ(${radius}px) rotateY(180deg)`;
+        const base = `rotateY(${cellAngle}deg) translateZ(${radius}px) rotateY(180deg)`;
+cell.style.setProperty("--cellTransform", base);
+cell.style.transform = base; // default (non-hover) transform
+
         cell.style.pointerEvents = "auto";
       }
 
@@ -125,7 +128,7 @@ const Carousel3D = forwardRef(function Carousel3D({ items }, ref) {
         radius,
         forwardZ,
       };
-      // init rotation at 0
+
       carousel.style.transform = `translateZ(${forwardZ}px) rotateY(0deg)`;
     };
 
@@ -142,9 +145,40 @@ const Carousel3D = forwardRef(function Carousel3D({ items }, ref) {
       window.removeEventListener("resize", schedule);
     };
   }, [cellCount, layout]);
+  const hoverCss = `
+  .carousel-cell{
+    transform-style: preserve-3d;
+    will-change: transform, box-shadow;
+    transition: transform 220ms ease, box-shadow 220ms ease;
+    cursor: pointer;
+  }
+
+  /* lift the whole cell, while keeping your existing 3D transform */
+  .carousel-cell:hover{
+    transform: var(--cellTransform) translateY(-14px) translateZ(18px);
+    box-shadow: 0 18px 50px rgba(0,0,0,0.22);
+  }
+
+  .carousel-cell:active{
+    transform: var(--cellTransform) translateY(-8px) translateZ(10px);
+  }
+
+  /* optional: slight float animation while hovered */
+  @media (prefers-reduced-motion: no-preference){
+    .carousel-cell:hover{
+      animation: floaty 1.8s ease-in-out infinite;
+    }
+    @keyframes floaty{
+      0%,100% { transform: var(--cellTransform) translateY(-14px) translateZ(18px); }
+      50%     { transform: var(--cellTransform) translateY(-18px) translateZ(22px); }
+    }
+  }
+`;
+
 
   return (
     <div ref={blockRef} style={style.block}>
+      <style>{hoverCss}</style>
       <div
         style={{
           ...style.scene,
@@ -158,13 +192,16 @@ const Carousel3D = forwardRef(function Carousel3D({ items }, ref) {
           {safeItems.map((p, i) => {
             const href = p.href?.trim();
             const Tag = href ? "a" : "div";
-            const linkProps = href ? { href, target: "_blank", rel: "noreferrer" } : {};
+            const linkProps = href
+              ? { href, target: "_blank", rel: "noreferrer" }
+              : {};
 
             return (
               <Tag
                 key={p.id}
                 {...linkProps}
                 ref={(el) => (cellsRef.current[i] = el)}
+                className="carousel-cell"
                 style={{
                   ...style.cell,
                   width: layout.cardW,
@@ -174,19 +211,7 @@ const Carousel3D = forwardRef(function Carousel3D({ items }, ref) {
                   borderRadius: layout.borderRadius,
                 }}
               >
-                <div style={style.card}>
-                  <div style={style.cardTop}>
-                    <div style={style.title}>{p.title}</div>
-                    {p.tag ? <div style={style.badge}>{p.tag}</div> : null}
-                  </div>
-
-                  {p.desc ? <div style={style.desc}>{p.desc}</div> : null}
-
-                  <div style={style.bottom}>
-                    <div style={style.meta}>{p.year || ""}</div>
-                    <div style={style.hint}>{href ? "↗ open" : ""}</div>
-                  </div>
-                </div>
+                <ProjectCard item={p} />
               </Tag>
             );
           })}
@@ -202,9 +227,30 @@ function ensureMin3(arr) {
   if (arr.length >= 3) return arr;
   if (arr.length === 0) {
     return [
-      { id: "empty-0", title: "No projects", desc: "", tag: "", year: "", href: "" },
-      { id: "empty-1", title: "No projects", desc: "", tag: "", year: "", href: "" },
-      { id: "empty-2", title: "No projects", desc: "", tag: "", year: "", href: "" },
+      {
+        id: "empty-0",
+        title: "No projects",
+        desc: "",
+        tag: "",
+        year: "",
+        href: "",
+      },
+      {
+        id: "empty-1",
+        title: "No projects",
+        desc: "",
+        tag: "",
+        year: "",
+        href: "",
+      },
+      {
+        id: "empty-2",
+        title: "No projects",
+        desc: "",
+        tag: "",
+        year: "",
+        href: "",
+      },
     ];
   }
   const out = [...arr];
@@ -229,6 +275,7 @@ const style = {
     transformStyle: "preserve-3d",
     background: "transparent",
     overflow: "visible",
+    pointerEvents: "none",
   },
   carousel: {
     width: "100%",
@@ -238,6 +285,7 @@ const style = {
     top: 0,
     transformStyle: "preserve-3d",
     willChange: "transform",
+    pointerEvents: "none",
   },
   cell: {
     position: "absolute",
@@ -251,50 +299,6 @@ const style = {
     transformStyle: "preserve-3d",
     backfaceVisibility: "hidden",
     WebkitBackfaceVisibility: "hidden",
+    pointerEvents: "auto",
   },
-  card: {
-    width: "100%",
-    height: "100%",
-    padding: 14,
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    boxSizing: "border-box",
-  },
-  cardTop: {
-    display: "flex",
-    alignItems: "flex-start",
-    justifyContent: "space-between",
-    gap: 8,
-  },
-  title: {
-    fontSize: 14,
-    fontWeight: 900,
-    lineHeight: 1.2,
-    textAlign: "left",
-  },
-  badge: {
-    fontSize: 11,
-    fontWeight: 700,
-    padding: "4px 8px",
-    borderRadius: 999,
-    background: "rgba(0,0,0,0.06)",
-    border: "1px solid rgba(0,0,0,0.12)",
-    whiteSpace: "nowrap",
-    color: "#111",
-  },
-  desc: {
-    fontSize: 12,
-    lineHeight: 1.35,
-    textAlign: "left",
-    opacity: 0.9,
-    marginTop: 8,
-  },
-  bottom: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  meta: { fontSize: 11, opacity: 0.75 },
-  hint: { fontSize: 11, opacity: 0.75 },
 };

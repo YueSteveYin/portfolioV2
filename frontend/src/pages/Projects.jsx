@@ -1,5 +1,5 @@
 // src/pages/Projects.jsx
-import React, {useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import projectsRaw from "../data/projects.json";
 import Carousel3D from "../components/Carousel3D";
 
@@ -10,7 +10,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Projects() {
   const projects = useMemo(() => {
-    const arr = Array.isArray(projectsRaw) ? projectsRaw : projectsRaw?.projects || [];
+    const arr = Array.isArray(projectsRaw)
+      ? projectsRaw
+      : projectsRaw?.projects || [];
     return arr.map((p, idx) => ({
       id: p.id ?? `p-${idx}`,
       title: p.title ?? "Untitled",
@@ -48,7 +50,6 @@ export default function Projects() {
         state.rot = -self.progress * (theta * n);
         carouselApiRef.current?.setRotationDeg(state.rot);
       },
-
     });
 
     // ensure initial
